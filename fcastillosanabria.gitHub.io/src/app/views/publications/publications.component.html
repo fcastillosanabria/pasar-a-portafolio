@@ -1,0 +1,222 @@
+<app-header></app-header>
+
+<!-- Solo visible en pantallas medianas y grandes -->
+    <div id="outer-cursor" class="d-none d-md-block"></div>
+    <div id="custom-cursor" class="d-none d-md-block"></div>
+
+    <!-- START Loader -->
+    <div class="container--loader">
+        <div class="loader"></div>
+    </div>
+    <!-- END Loader -->
+
+    <!--Cursor Rojo-->
+    <div class="cursor3"></div>
+    <script>
+        const cursor3 = document.querySelector('.cursor3');
+
+        document.addEventListener('mousemove', e => {
+            cursor3.setAttribute("style", "top: " + (e.pageY - 1) + "px; left: " + (e.pageX - 2) + "px;")
+        })
+    </script>
+
+    <!--Cursor Amarillo-->
+    <div class="cursor2"></div>
+    <script>
+        const cursor2 = document.querySelector('.cursor2');
+
+        document.addEventListener('mousemove', e => {
+            cursor2.setAttribute("style", "top: " + (e.pageY - 1) + "px; left: " + (e.pageX - 2) + "px;")
+        })
+    </script>
+
+    <!--Cursor Verde-->
+    <div class="cursor"></div>
+
+    <script>
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', e => {
+            cursor.setAttribute("style", "top: " + (e.pageY - 1) + "px; left: " + (e.pageX - 2) + "px;")
+        })
+    </script>
+
+
+    <!--Barra Menú-->
+    <div id="header"></div>
+
+    <!-- Sección: Resumen Error -->
+    <section id="resumenError" class="py-5 text-center text-md-start">
+        <div class="container py-5">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="img-container mx-auto"
+                        style="background-image: url('img/ubuntuDañado.png'); background-size: cover; background-position: center; height: 350px; width: 100%; max-width: 518px; border-radius: 10px;">
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex flex-column justify-content-center px-4">
+                    <h2>ERROR <span class="text-danger">404</span></h2>
+                    <p class="mt-3 text-justify">
+                        Seguramente te ha pasado: haces clic en un enlace y este te redirige automáticamente a una
+                        página que muestra un mensaje
+                        que dice que el contenido solicitado no está disponible, a menudo como
+                        "404 Not Found" o "404 page not found". El error 404 es un
+                        código de estado HTTP enviado desde el servidor web al navegador.
+                    </p>
+                    <p>
+                        <b><a href="https://www.ionos.es/digitalguide/paginas-web/creacion-de-paginas-web/que-significa-el-error-404-not-found/"
+                                target="_blank" class="text-decoration-none">Presiona aquí</a></b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Canal de YouTube -->
+    <section id="canalYouTube" class="py-5 text-center text-md-start bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center justify-content-center flex-column-reverse flex-md-row">
+                <div class="col-md-6 d-flex flex-column justify-content-center px-4">
+                    <h2>ERROR <span class="text-danger">404</span></h2>
+                    <p class="mt-3 text-justify">
+                        Puedes visitar mi canal de YouTube si deseas aprender temas nuevos y aprenderemos juntos, te
+                        espero.
+                        <br><br>See you soon!
+                    </p>
+                    <p>
+                        <b><a href="https://www.youtube.com/@deJava1703" target="_blank"
+                                class="text-decoration-none">Visitar canal</a></b>
+                    </p>
+                </div>
+                <div class="col-md-6 mb-4 mb-md-0 text-center" id="youtube-section">
+                    <div class="ratio ratio-16x9">
+                        <div class="ratio ratio-16x9">
+
+                        </div>
+                        <div class="ratio ratio-16x9" id="youtube-latest"></div>
+
+                        <script>
+                            const API_KEY = "AIzaSyCP7MuGIpmSPTK8wumQeTZH74RHRWIA7oI"; // 🔑 Pega aquí tu API Key
+                            const CHANNEL_ID = "UC42L6_bppE3cWVt0s1_trSA"; // 🎥 Tu Channel ID real
+                            async function getLatestNonShort() {
+                                try {
+                                    // 1️⃣ Obtener los últimos 10 videos subidos
+                                    const searchResponse = await fetch(
+                                        `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&order=date&part=id&type=video&maxResults=10`
+                                    );
+                                    const searchData = await searchResponse.json();
+
+                                    if (!searchData.items?.length) {
+                                        document.getElementById("youtube-latest").innerHTML = "<p>No se encontraron videos.</p>";
+                                        return;
+                                    }
+
+                                    // 2️⃣ Tomar todos los IDs de esos videos
+                                    const videoIds = searchData.items.map(item => item.id.videoId).join(",");
+
+                                    // 3️⃣ Obtener la duración de cada uno
+                                    const detailsResponse = await fetch(
+                                        `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&id=${videoIds}&part=contentDetails`
+                                    );
+                                    const detailsData = await detailsResponse.json();
+
+                                    // 4️⃣ Filtrar los que duren más de 60 segundos
+                                    const validVideos = detailsData.items.filter(video => {
+                                        const duration = video.contentDetails.duration;
+                                        const seconds = parseDuration(duration);
+                                        return seconds > 60;
+                                    });
+
+                                    if (!validVideos.length) {
+                                        document.getElementById("youtube-latest").innerHTML = "<p>No hay videos largos disponibles.</p>";
+                                        return;
+                                    }
+
+                                    // 5️⃣ Mostrar el primero que no sea short
+                                    const videoId = validVideos[0].id;
+                                    document.getElementById("youtube-latest").innerHTML = `
+        <iframe
+          src="https://www.youtube.com/embed/${videoId}"
+          title="Último video de YouTube (no Short)"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      `;
+                                } catch (error) {
+                                    console.error("Error al obtener el video:", error);
+                                    document.getElementById("youtube-latest").innerHTML = "<p>Error al conectar con la API de YouTube.</p>";
+                                }
+                            }
+
+                            // 🔍 Función para convertir ISO 8601 a segundos
+                            function parseDuration(isoDuration) {
+                                const match = isoDuration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+                                const hours = parseInt(match[1] || 0);
+                                const minutes = parseInt(match[2] || 0);
+                                const seconds = parseInt(match[3] || 0);
+                                return hours * 3600 + minutes * 60 + seconds;
+                            }
+
+                            // 🚀 Ejecutar al cargar la página
+                            getLatestNonShort();
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--Final Codigo de esta pagina-->
+
+    <!-- socialMedia -->
+    <div id="socialMedia"></div>
+
+    <!-- chabot -->
+    <div id="chatbot"></div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Mi script -->
+    <script src="script.js"></script>
+    <script defer src="load-components.js"></script>
+
+     <!-- JavaScript Mouse -->
+    <script>
+        // Obtener los elementos del cursor
+        const outerCursor = document.getElementById('outer-cursor');
+        const customCursor = document.getElementById('custom-cursor');
+
+        // Mover el aro más grande y el puntero pequeño con el mouse
+        document.addEventListener('mousemove', (e) => {
+            // Posicionar el aro grande
+            outerCursor.style.left = `${e.clientX - 25}px`;  // Restamos la mitad del tamaño del aro grande
+            outerCursor.style.top = `${e.clientY - 25}px`;  // Restamos la mitad del tamaño del aro grande
+
+            // Posicionar el puntero dentro del aro grande
+            customCursor.style.left = `${e.clientX - 12}px`;  // Restamos la mitad del tamaño del puntero
+            customCursor.style.top = `${e.clientY - 12}px`;  // Restamos la mitad del tamaño del puntero
+        });
+
+        // Cambiar el color del puntero y activar el pulso en el aro cuando está sobre un enlace o botón
+        document.querySelectorAll('a, button').forEach(elem => {
+            customCursor.classList.add('pulse-active'); // El circulo pequeño comieza palpitando
+            elem.addEventListener('mouseenter', () => {
+                customCursor.style.setProperty('--cursor-color', 'red');
+                customCursor.classList.add('pulse-active');
+                outerCursor.style.setProperty('--cursor-color', 'red');
+                outerCursor.classList.add('pulse-active');  // Activa la animación de pulso
+            });
+            elem.addEventListener('mouseleave', () => {
+                customCursor.style.setProperty('--cursor-color', 'orange');
+                outerCursor.style.setProperty('--cursor-color', 'orange');
+                outerCursor.classList.remove('pulse-active');  // Desactiva la animación de pulso
+            });
+        });
+    </script>
+
+<app-footer></app-footer>
