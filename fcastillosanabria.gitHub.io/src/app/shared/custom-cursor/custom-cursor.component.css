@@ -1,7 +1,5 @@
-
-
         /* Crear el aro más grande (externo) */
-        #outer-cursor {
+        #big-cursor {
             position: fixed;
             width: 50px;
             /* Tamaño del aro grande */
@@ -17,7 +15,7 @@
         }
 
         /* Crear el puntero (custom cursor) */
-        #custom-cursor {
+        #small-cursor {
             position: fixed;
             width: 25px;
             height: 25px;

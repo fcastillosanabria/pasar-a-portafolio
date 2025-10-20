@@ -6,19 +6,19 @@ import { AfterViewInit, Component, ElementRef, HostListener, Renderer2 } from '@
   styleUrls: ['./custom-cursor.component.css']
 })
 export class CustomCursorComponent implements AfterViewInit {
-  private outerCursor!: HTMLElement;
-  private customCursor!: HTMLElement;
+  private bigCursor!: HTMLElement;
+  private smallCursor!: HTMLElement;
 
   constructor(private renderer: Renderer2, private el: ElementRef) {}
 
   ngAfterViewInit() {
-    this.outerCursor = this.el.nativeElement.querySelector('#outer-cursor');
-    this.customCursor = this.el.nativeElement.querySelector('#custom-cursor');
+    this.bigCursor = this.el.nativeElement.querySelector('#big-cursor');
+    this.smallCursor = this.el.nativeElement.querySelector('#small-cursor');
 
     // Aplicar comportamiento a enlaces y botones
     const clickableElements = document.querySelectorAll('a, button');
     clickableElements.forEach(elem => {
-      this.renderer.addClass(this.customCursor, 'pulse-active');
+      this.renderer.addClass(this.smallCursor, 'pulse-active');
 
       elem.addEventListener('mouseenter', () => {
         this.setCursorColor('red', true);
@@ -35,23 +35,21 @@ export class CustomCursorComponent implements AfterViewInit {
   onMouseMove(event: MouseEvent) {
     const { clientX, clientY } = event;
 
-    this.renderer.setStyle(this.outerCursor, 'left', `${clientX - 25}px`);
-    this.renderer.setStyle(this.outerCursor, 'top', `${clientY - 25}px`);
+    this.renderer.setStyle(this.bigCursor, 'left', `${clientX - 25}px`);
+    this.renderer.setStyle(this.bigCursor, 'top', `${clientY - 25}px`);
 
-    this.renderer.setStyle(this.customCursor, 'left', `${clientX - 12}px`);
-    this.renderer.setStyle(this.customCursor, 'top', `${clientY - 12}px`);
+    this.renderer.setStyle(this.smallCursor, 'left', `${clientX - 12}px`);
+    this.renderer.setStyle(this.smallCursor, 'top', `${clientY - 12}px`);
   }
 
   private setCursorColor(color: string, active: boolean) {
-    this.outerCursor.style.setProperty('--cursor-color', color);
-    this.customCursor.style.setProperty('--cursor-color', color);
+    this.bigCursor.style.setProperty('--cursor-color', color);
+    this.smallCursor.style.setProperty('--cursor-color', color);
 
     if (active) {
-      this.renderer.addClass(this.outerCursor, 'pulse-active');
-      this.renderer.addClass(this.customCursor, 'pulse-active');
+      this.renderer.addClass(this.bigCursor, 'pulse-active');
     } else {
-      this.renderer.removeClass(this.outerCursor, 'pulse-active');
-      this.renderer.removeClass(this.customCursor, 'pulse-active');
+      this.renderer.removeClass(this.bigCursor, 'pulse-active');
     }
   }
 }

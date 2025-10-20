@@ -1,3 +1,9 @@
+.dropdown-item img,
+.nav-link img {
+  border-radius: 3px;
+}
+
+
     /** Quitar el ícono de flecha de los enlaces que no son desplegables **/
     .accordion-button.no-arrow::after {
         display: none !important;

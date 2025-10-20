@@ -7,12 +7,9 @@
 
         <!-- Enlaces de navegación -->
         <ul class="list-inline mb-4">
-            <li class="list-inline-item mx-3"><a href="#" class="text-decoration-none text-white">Home</a></li>
-            <li class="list-inline-item mx-3"><a href="#" class="text-decoration-none text-white">Agent</a></li>
-            <li class="list-inline-item mx-3"><a href="#" class="text-decoration-none text-white">About</a></li>
-            <li class="list-inline-item mx-3"><a href="#" class="text-decoration-none text-white">Listing</a></li>
-            <li class="list-inline-item mx-3"><a href="#" class="text-decoration-none text-white">Blog</a></li>
-            <li class="list-inline-item mx-3"><a href="#" class="text-decoration-none text-white">Contact</a></li>
+            <li class="list-inline-item mx-3"><a [routerLink]="['/home']" class="text-decoration-none text-white">Home</a></li>
+            <li class="list-inline-item mx-3"><a [routerLink]="['/contact']" class="text-decoration-none text-white">Contact me</a></li>
+            <li class="list-inline-item mx-3"><a [routerLink]="['/publications']" class="text-decoration-none text-white">publications</a></li>
         </ul>
 
         <!-- Iconos de redes sociales -->
@@ -33,9 +30,9 @@
 
         <!-- Texto de derechos de autor -->
         <p class="mb-0 text-white">
-            Copyright © <span id="copyright-year"></span> All rights reserved |
+            Copyright © <span>{{ currentYear }}</span> All rights reserved |
             This template is made by
-            <a href="https://fcastillosanabria.github.io/" class="text-decoration-none text-white fw-bold">deJava</a>
+            <a [routerLink]="['/']" class="text-decoration-none text-white fw-bold">deJava</a>
         </p>
     </div>
 

@@ -38,3 +38,59 @@
             transform: translateY(-5px);
             /* Eleva un poco el card */
         }
+
+        #rotating-image {
+          transition: opacity 1s ease-in-out;
+          /* Transición de desvanecido */
+          opacity: 1;
+          /* Imagen visible */
+        }
+
+        #rotating-image.fade-out {
+          opacity: 0;
+        }
+
+        .text-overlay {
+          z-index: 2;
+          color: white;
+        }
+
+        .image-container {
+          z-index: 1;
+        }
+
+        .gradient-text {
+          background: linear-gradient(45deg, #fa9a25, #feeec7);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+
+        /* Efecto de escritura */
+#role {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.1em solid white;
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Imagen con fade */
+.rotating-image {
+  transition: opacity 1s ease;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+/* Botones opcionales */
+.contact-btn {
+  margin-right: 10px;
+}

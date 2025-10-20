@@ -1,0 +1,12 @@
+{
+  "NAV": {
+    "HOME": "Inicio",
+    "CONTACT": "Contáctame",
+    "PUBLICATIONS": "Publicaciones"
+  },
+  "HOME": {
+    "GREETING": "Hola,",
+    "INTRO": "Soy "
+  }
+}
+
