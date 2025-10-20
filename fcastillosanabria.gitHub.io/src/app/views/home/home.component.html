@@ -1,7 +1,6 @@
 <app-header></app-header>
-    <!-- Solo visible en pantallas medianas y grandes -->
-    <div id="outer-cursor" class="d-none d-md-block"></div>
-    <div id="custom-cursor" class="d-none d-md-block"></div>
+<app-custom-cursor></app-custom-cursor>
+<app-social-media></app-social-media>
 
 
     <!-- START Loader -->
@@ -9,9 +8,6 @@
         <div class="loader"></div>
     </div>
     <!-- END Loader -->
-
-    <!--Barra Menú-->
-    <div id="header"></div>
 
     <!--Inicio Codigo de esta pagina-->
     <section class="hero-section d-flex align-items-center min-vh-100 text-white px-5 mt-5" id="sobreMi"
@@ -533,59 +529,10 @@
     </style>
 
 
-
-
-
     <!--Final Codigo de esta pagina-->
-
-    <!-- Footer -->
-    <div id="footer" style="z-index: 90;"></div>
-
-    <!-- socialMedia -->
-    <div id="socialMedia"></div>
-
-    <!-- Chatbot -->
-    <div id="chatbot">
-        <!-- Aquí insertas el contenido de chatbot.html -->
-    </div>
 
     <!-- Mi script loader -->
     <script src="script.js"></script>
 
-    <!-- Logica para mostrar componentes -->
-    <script defer src="load-components.js"></script>
-
-    <!-- JavaScript Mouse -->
-    <script>
-        // Obtener los elementos del cursor
-        const outerCursor = document.getElementById('outer-cursor');
-        const customCursor = document.getElementById('custom-cursor');
-
-        // Mover el aro más grande y el puntero pequeño con el mouse
-        document.addEventListener('mousemove', (e) => {
-            // Posicionar el aro grande
-            outerCursor.style.left = `${e.clientX - 25}px`;  // Restamos la mitad del tamaño del aro grande
-            outerCursor.style.top = `${e.clientY - 25}px`;  // Restamos la mitad del tamaño del aro grande
-
-            // Posicionar el puntero dentro del aro grande
-            customCursor.style.left = `${e.clientX - 12}px`;  // Restamos la mitad del tamaño del puntero
-            customCursor.style.top = `${e.clientY - 12}px`;  // Restamos la mitad del tamaño del puntero
-        });
-
-        // Cambiar el color del puntero y activar el pulso en el aro cuando está sobre un enlace o botón
-        document.querySelectorAll('a, button').forEach(elem => {
-            customCursor.classList.add('pulse-active'); // El circulo pequeño comieza palpitando
-            elem.addEventListener('mouseenter', () => {
-                customCursor.style.setProperty('--cursor-color', 'red');
-                customCursor.classList.add('pulse-active');
-                outerCursor.style.setProperty('--cursor-color', 'red');
-                outerCursor.classList.add('pulse-active');  // Activa la animación de pulso
-            });
-            elem.addEventListener('mouseleave', () => {
-                customCursor.style.setProperty('--cursor-color', 'orange');
-                outerCursor.style.setProperty('--cursor-color', 'orange');
-                outerCursor.classList.remove('pulse-active');  // Desactiva la animación de pulso
-            });
-        });
-    </script>
-<app-footer></app-footer>
+    <app-chat-bot></app-chat-bot>
+    <app-footer></app-footer>

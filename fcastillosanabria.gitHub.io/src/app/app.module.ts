@@ -8,6 +8,9 @@ import { HomeComponent } from './views/home/home.component';
 import { PublicationsComponent } from './views/publications/publications.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ChatBotComponent } from './shared/chat-bot/chat-bot.component';
+import { CustomCursorComponent } from './shared/custom-cursor/custom-cursor.component';
+import { SocialMediaComponent } from './shared/social-media/social-media.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { FooterComponent } from './shared/footer/footer.component';
     PublicationsComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ChatBotComponent,
+    CustomCursorComponent,
+    SocialMediaComponent,
   ],
   imports: [
     BrowserModule,

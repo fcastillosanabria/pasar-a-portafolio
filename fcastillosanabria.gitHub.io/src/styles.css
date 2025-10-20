@@ -1,1 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* Ocultar el puntero del mouse en todos los componentes */
+        * {
+            cursor: none !important;
+        }
