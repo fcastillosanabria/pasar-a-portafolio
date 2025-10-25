@@ -32,7 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChatBotComponent,
     CustomCursorComponent,
     SocialMediaComponent,
-    LanguageSelectorComponent,
+    LanguageSelectorComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@
             /* Forzar el cambio de fondo (rosado claro) */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             /* Sombra más intensa */
-            transform: translateY(-5px);
+            transform: translateY(-15px);
             /* Eleva un poco el card */
             transition: all 0.6s ease;
             /* Transición suave para todos los cambios */
