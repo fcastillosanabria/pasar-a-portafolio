@@ -1,118 +1,65 @@
 <app-header></app-header>
+<app-custom-cursor></app-custom-cursor>
+<app-social-media></app-social-media>
+<app-chat-bot></app-chat-bot>
 
-    <!-- Solo visible en pantallas medianas y grandes -->
-    <div id="outer-cursor" class="d-none d-md-block"></div>
-    <div id="custom-cursor" class="d-none d-md-block"></div>
-
-    <!-- START Loader -->
-    <div class="container--loader">
-        <div class="loader"></div>
-    </div>
-    <!-- END Loader -->
-
-    <!--Cursor Rojo-->
-    <div class="cursor3"></div>
-    <script>
-        const cursor3 = document.querySelector('.cursor3');
-
-        document.addEventListener('mousemove', e => {
-            cursor3.setAttribute("style", "top: " + (e.pageY -1) + "px; left: "+ (e.pageX -2) + "px;" )
-        })
-    </script>
-
-    <!--Cursor Amarillo-->
-    <div class="cursor2"></div>
-    <script>
-        const cursor2 = document.querySelector('.cursor2');
-
-        document.addEventListener('mousemove', e => {
-            cursor2.setAttribute("style", "top: " + (e.pageY -1) + "px; left: "+ (e.pageX -2) + "px;" )
-        })
-    </script>
-
-    <!--Cursor Verde-->
-    <div class="cursor"></div>
-
-    <script>
-        const cursor = document.querySelector('.cursor');
-
-        document.addEventListener('mousemove', e => {
-            cursor.setAttribute("style", "top: " + (e.pageY -1) + "px; left: "+ (e.pageX -2) + "px;" )
-        })
-    </script>
-
-
-    <!--Barra Menú-->
-    <div id="header"></div>
-
-<!--Inicio Codigo de esta pagina-->
+<!-- 🌤️ Fondo decorativo opcional -->
 <div class="nube"></div>
 <div class="nube2"></div>
 <div class="nube3"></div>
 <div class="nube4"></div>
-<section id="contactanos">
-    <div class="container">
-        <div class="img-container"></div>
-        <div class="texto">
-            <form class="form"   action="https://formspree.io/f/mayzedqp"
-            method="POST">
-                <div class="form__container">
-                    <h2 class="form__title">Contactame</h2>
-                    <input type="text" class="form__input" placeholder="Nombre:" name="name">
-                    <input type="email" class="form__input" placeholder="Email:" name="email">
-                    <textarea class="form__input form__input--message" placeholder="Mensaje:" name="message"></textarea>
 
-                    <input type="submit" value="Enviar" class="form__cta">
+<!-- 🌟 Sección de contacto -->
+<section id="contactanos" class="pb-5 position-relative">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+
+            <!-- Imagen -->
+            <div class="col-md-6 mb-4 mb-md-0 text-center d-none d-md-block">
+                <div class="image-hover">
+                    <img src="assets/img/imagenContactanos.png" alt="Contáctanos" class="base-img pulsar">
+                    <img src="assets/img/contactanos.png" alt="Contáctanos hover" class="hover-img">
                 </div>
-            </form>
+            </div>
+
+
+
+
+            <!-- Formulario -->
+            <div class="col-md-6">
+                <div class="card shadow-lg border-0 rounded-4 h-100 w-75 mx-auto">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="text-center mb-4 fw-bold">Contáctame</h2>
+
+                        <form action="https://formspree.io/f/mayzedqp" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Escribe tu nombre" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="tu@correo.com" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje</label>
+                                <textarea id="message" name="message" class="form-control" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-danger btn-lg">
+                  Enviar mensaje
+                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!--Final Codigo de esta pagina-->
-
-    <!-- socialMedia -->
-    <div id="socialMedia"></div>
-
-    <!-- Footer -->
-    <div id="footer"></div>
-
-    <!-- Mi script -->
-    <script src="script.js"></script>
-    <script defer src="load-components.js"></script>
-
-     <!-- JavaScript Mouse -->
-    <script>
-        // Obtener los elementos del cursor
-        const outerCursor = document.getElementById('outer-cursor');
-        const customCursor = document.getElementById('custom-cursor');
-
-        // Mover el aro más grande y el puntero pequeño con el mouse
-        document.addEventListener('mousemove', (e) => {
-            // Posicionar el aro grande
-            outerCursor.style.left = `${e.clientX - 25}px`;  // Restamos la mitad del tamaño del aro grande
-            outerCursor.style.top = `${e.clientY - 25}px`;  // Restamos la mitad del tamaño del aro grande
-
-            // Posicionar el puntero dentro del aro grande
-            customCursor.style.left = `${e.clientX - 12}px`;  // Restamos la mitad del tamaño del puntero
-            customCursor.style.top = `${e.clientY - 12}px`;  // Restamos la mitad del tamaño del puntero
-        });
-
-        // Cambiar el color del puntero y activar el pulso en el aro cuando está sobre un enlace o botón
-        document.querySelectorAll('a, button').forEach(elem => {
-            customCursor.classList.add('pulse-active'); // El circulo pequeño comieza palpitando
-            elem.addEventListener('mouseenter', () => {
-                customCursor.style.setProperty('--cursor-color', 'red');
-                customCursor.classList.add('pulse-active');
-                outerCursor.style.setProperty('--cursor-color', 'red');
-                outerCursor.classList.add('pulse-active');  // Activa la animación de pulso
-            });
-            elem.addEventListener('mouseleave', () => {
-                customCursor.style.setProperty('--cursor-color', 'orange');
-                outerCursor.style.setProperty('--cursor-color', 'orange');
-                outerCursor.classList.remove('pulse-active');  // Desactiva la animación de pulso
-            });
-        });
-    </script>
 
 <app-footer></app-footer>

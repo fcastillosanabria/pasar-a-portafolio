@@ -1,4 +1,16 @@
 /* Ocultar el puntero del mouse en todos los componentes */
-        * {
-            cursor: none !important;
-        }
+
+* {
+    cursor: none !important;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}

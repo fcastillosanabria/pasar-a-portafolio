@@ -7,8 +7,7 @@
         </a>
 
         <!-- Botón hamburguesa -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
-            aria-controls="staticBackdrop" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -17,8 +16,7 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Dropdown Inicio -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" [routerLink]="['/']" id="inicioDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" [routerLink]="['/']" id="inicioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ 'NAV.HOME' | translate }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="inicioDropdown">
@@ -43,8 +41,7 @@
 </nav>
 
 <!-- Offcanvas (para pantallas pequeñas) -->
-<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
-    aria-labelledby="staticBackdropLabel">
+<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="staticBackdropLabel">Menú</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -55,13 +52,11 @@
         <div class="accordion" id="offcanvasAccordion">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingInicio">
-                    <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseInicio" aria-expanded="false" aria-controls="collapseInicio">
+                    <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInicio" aria-expanded="false" aria-controls="collapseInicio">
                         Home
                     </button>
                 </h2>
-                <div id="collapseInicio" class="accordion-collapse collapse" aria-labelledby="headingInicio"
-                    data-bs-parent="#offcanvasAccordion">
+                <div id="collapseInicio" class="accordion-collapse collapse" aria-labelledby="headingInicio" data-bs-parent="#offcanvasAccordion">
                     <div class="accordion-body p-0">
                         <ul class="list-unstyled mb-0">
                             <li><a class="justify-text dropdown-item" href="index.html#sobreMi">Sobre mí</a></li>
