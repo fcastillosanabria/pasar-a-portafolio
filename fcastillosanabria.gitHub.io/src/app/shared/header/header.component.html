@@ -8,24 +8,23 @@
 
         <!-- Botón hamburguesa -->
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
         <!-- Enlaces del Navbar -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <!-- Dropdown Inicio -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" [routerLink]="['/']" id="inicioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ 'NAV.HOME' | translate }}
-                    </a>
+                    <a class="nav-link dropdown-toggle text-white" id="inicioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ 'NAV.HOME' | translate }}
+          </a>
                     <ul class="dropdown-menu" aria-labelledby="inicioDropdown">
-                        <li><a class="dropdown-item" href="index.html#sobreMi">Sobre mí</a></li>
-                        <li><a class="dropdown-item" href="index.html#proyectos">Proyectos Destacados</a></li>
-                        <li><a class="dropdown-item" href="index.html#habilidades">Habilidades técnicas</a></li>
-                        <li><a class="dropdown-item" href="servicios.html">Formación</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/']" fragment="sobreMi">Sobre mí</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/']" fragment="proyectos">Proyectos Destacados</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/']" fragment="habilidades">Habilidades técnicas</a></li>
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a [routerLink]="['/contact']" class="nav-link text-white">{{ 'NAV.CONTACT' | translate }}</a>
                 </li>
@@ -53,8 +52,8 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingInicio">
                     <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInicio" aria-expanded="false" aria-controls="collapseInicio">
-                        Home
-                    </button>
+            Home
+          </button>
                 </h2>
                 <div id="collapseInicio" class="accordion-collapse collapse" aria-labelledby="headingInicio" data-bs-parent="#offcanvasAccordion">
                     <div class="accordion-body p-0">
@@ -71,8 +70,8 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <a class="accordion-button no-arrow collapsed text-black" href="contactame.html">
-                        Contact me
-                    </a>
+            Contact me
+          </a>
                 </h2>
             </div>
 
@@ -80,8 +79,8 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <a class="accordion-button no-arrow collapsed text-black" href="publicaciones.html">
-                        My publications
-                    </a>
+            My publications
+          </a>
                 </h2>
             </div>
         </div>
