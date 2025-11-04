@@ -52,3 +52,7 @@
     color: #ffc107 !important;
     /* o el color que prefieras */
 }
+
+.accordion-button::after {
+    filter: invert(1) brightness(200%);
+}
