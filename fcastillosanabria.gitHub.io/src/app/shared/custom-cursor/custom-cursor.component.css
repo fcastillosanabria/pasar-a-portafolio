@@ -1,4 +1,5 @@
         /* Crear el aro más grande (externo) */
+
         #big-cursor {
             position: fixed;
             width: 50px;
@@ -9,12 +10,12 @@
             /* Aro exterior con borde */
             border-radius: 50%;
             pointer-events: none;
-            z-index: 9998;
+            z-index: 80;
             /* Asegura que esté por debajo del puntero */
             transition: all 0.1s ease;
         }
-
         /* Crear el puntero (custom cursor) */
+
         #small-cursor {
             position: fixed;
             width: 25px;
@@ -23,38 +24,36 @@
             /* Color configurable */
             border-radius: 50%;
             pointer-events: none;
-            z-index: 9999;
+            z-index: 80;
             /* Asegura que esté por encima del aro */
             transition: all 0.1s ease;
         }
-
         /* Asegurarse de que el puntero no se vea en enlaces y botones */
+
         a,
         button {
             cursor: none !important;
         }
-
         /* Animación de pulso para el aro exterior */
+
         @keyframes pulse {
             0% {
                 transform: scale(1);
                 opacity: 1;
             }
-
             50% {
                 transform: scale(1.2);
                 /* Aumento del tamaño */
                 opacity: 0.6;
                 /* Opacidad más baja */
             }
-
             100% {
                 transform: scale(1);
                 opacity: 1;
             }
         }
-
         /* Clase de pulso activa */
+
         .pulse-active {
             animation: pulse 1s infinite;
             /* Pulso que dura 1 segundo y se repite infinitamente */

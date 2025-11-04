@@ -15,6 +15,7 @@ import { LanguageSelectorComponent } from './shared/language-selector/language-s
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { PreloaderComponent } from './shared/preloader/preloader.component';
 
 // Función para crear el loader de traducciones
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChatBotComponent,
     CustomCursorComponent,
     SocialMediaComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,
